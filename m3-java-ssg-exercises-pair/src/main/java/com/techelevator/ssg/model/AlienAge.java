@@ -13,30 +13,30 @@ public AlienAge(double earthAge, String planetName){
 
 public double calculateAlienAge(){
 
-if (planetName.equals("Mercury")){
+if (planetName.equalsIgnoreCase("Mercury")){
 	alienAge = earthAge * 4.15;
 }
 
-else if (planetName.equals("Venus")){
+else if (planetName.equalsIgnoreCase("Venus")){
 	alienAge = earthAge * 1.63;
 }
 
-else if (planetName.equals("Earth")){
+else if (planetName.equalsIgnoreCase("Earth")){
 	alienAge = earthAge * 1;
 }
-else if (planetName.equals("Mars")){
+else if (planetName.equalsIgnoreCase("Mars")){
 	alienAge = earthAge * 0.53;
 }
-else if (planetName.equals("Jupiter")){
+else if (planetName.equalsIgnoreCase("Jupiter")){
 	alienAge = earthAge * 0.08;
 }
-else if (planetName.equals("Saturn")){
+else if (planetName.equalsIgnoreCase("Saturn")){
 	alienAge = earthAge * 0.03;
 }
-else if (planetName.equals("Neptune")){
+else if (planetName.equalsIgnoreCase("Neptune")){
 	alienAge = earthAge * 0.012;
 }
-else if (planetName.equals("Uranus")){
+else if (planetName.equalsIgnoreCase("Uranus")){
 	alienAge = earthAge * 0.006;
 }
 	return alienAge;

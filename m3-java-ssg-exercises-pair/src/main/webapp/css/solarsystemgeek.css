@@ -219,3 +219,8 @@ section.centeredPanel {
 #alienAgeCalculationResults > th, td {
 	color: black;
 }
+
+.planetAgeImage {
+	width: 25%;
+	margin: 10px;
+}
