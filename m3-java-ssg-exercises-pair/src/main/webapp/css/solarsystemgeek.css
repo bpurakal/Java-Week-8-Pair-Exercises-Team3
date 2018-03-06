@@ -227,5 +227,6 @@ section.centeredPanel {
 
 .ageResult {
 	position: absolute;
-	padding: 20px 0px 0px 0px;
+	padding: 20px 300px 0px 0px;
+	font-weight: bold;
 }

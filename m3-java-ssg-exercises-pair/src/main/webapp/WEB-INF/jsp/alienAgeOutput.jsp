@@ -11,9 +11,8 @@
 			If you are
 			<c:out value="${param.earthAge}" />
 			years on planet Earth, then you are
-			<c:out value="${calculatedAge.calculateAlienAge()}" />
-			years on planet
-			<c:out value="${param.choosePlanet}" />.
+			<c:out value="${calculatedAge.calculateAlienAge()} " />
+			<c:out value="${param.choosePlanet}" /> years old.
 		</span>
 	</div>
 
