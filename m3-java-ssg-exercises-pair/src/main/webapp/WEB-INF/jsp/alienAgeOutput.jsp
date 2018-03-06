@@ -7,11 +7,14 @@
 	<div>
 
 		<img class="planetAgeImage" src="img/${param.choosePlanet}.jpg" />
-		
-		If you are <c:out value="${param.earthAge}" />
-		years on planet Earth, 
-		then you are <c:out value="${calculatedAge.calculateAlienAge()}" /> years on planet <c:out value="${param.choosePlanet}" />.
-
+		<span class="ageResult">
+			If you are
+			<c:out value="${param.earthAge}" />
+			years on planet Earth, then you are
+			<c:out value="${calculatedAge.calculateAlienAge()}" />
+			years on planet
+			<c:out value="${param.choosePlanet}" />.
+		</span>
 	</div>
 
 

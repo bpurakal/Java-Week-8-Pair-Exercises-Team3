@@ -224,3 +224,8 @@ section.centeredPanel {
 	width: 25%;
 	margin: 10px;
 }
+
+.ageResult {
+	position: absolute;
+	padding: 20px 0px 0px 0px;
+}
