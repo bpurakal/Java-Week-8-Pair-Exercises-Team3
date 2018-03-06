@@ -215,3 +215,7 @@ section.centeredPanel {
     padding: 10px;
     margin-bottom: 10px;
 }
+
+#alienAgeCalculationResults > th, td {
+	color: black;
+}
