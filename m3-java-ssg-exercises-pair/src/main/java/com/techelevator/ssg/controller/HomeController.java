@@ -26,7 +26,7 @@ public class HomeController {
 		AlienAge calculatedAge = new AlienAge(earthAge, choosePlanet);
 		modelHolder.put("earthAge", earthAge);
 		modelHolder.put("planetName", choosePlanet);
-		modelHolder.put("calculatedAge", calculatedAge);
+		modelHolder.put("calculatedAge", calculatedAge.calculateAlienAge());
 		return "alienAgeOutput";
 	}
 	

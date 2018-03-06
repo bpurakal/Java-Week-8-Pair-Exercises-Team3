@@ -9,9 +9,9 @@
 		<img class="planetAgeImage" src="img/${param.choosePlanet}.jpg" />
 		<span class="ageResult">
 			If you are
-			<c:out value="${param.earthAge}" />
+			<c:out value="${param.earthWeight}" />
 			years on planet Earth, then you are
-			<c:out value="${calculatedAge} " />
+			<c:out value="${calculatedWeight} " />
 			<c:out value="${param.choosePlanet}" /> years old.
 		</span>
 	</div>
