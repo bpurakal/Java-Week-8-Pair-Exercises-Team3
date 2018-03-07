@@ -30,5 +30,20 @@ public class HomeController {
 		return "alienAgeOutput";
 	}
 	
+	@RequestMapping(path="/spaceForumSubmission", method=RequestMethod.POST)
+	public String spaceForumSubmission(@RequestParam String username, @RequestParam String subject, @RequestParam String message, ModelMap modelHolder) {
+		
+		
+		return "redirect:/spaceForum";
+	}
+	
+	@RequestMapping(path="/spaceForum", method=RequestMethod.GET)
+	public String spaceForum(){
+		
+		return "spaceForum";
+	}
+	
+	
+	
 
 }
