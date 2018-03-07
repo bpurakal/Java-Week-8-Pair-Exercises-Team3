@@ -25,8 +25,11 @@
         <ul>
        	 	<c:url var="alienAgeUrl" value="/alienAgeInput" />
             <li><a href="${alienAgeUrl}">Alien Age</a></li>
-            <li><a href="#">Alien Weight</a></li>
-            <li><a href="#">Drive Time</a></li>    
+            <c:url var="alienWeightUrl" value="/alienWeightInput" />
+            <li><a href="${alienWeightUrl}">Alien Weight</a></li>
+             <c:url var="alienTravelTimeUrl" value="/AlienTravelTimeInput" />
+            <li><a href="${alienTravelTimeUrl}">Drive Time</a></li>    
+            
                        
         </ul>
     </nav>

@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.techelevator.ssg.model.AlienAge;
+import com.techelevator.ssg.model.AlienTravelTime;
+import com.techelevator.ssg.model.AlienWeight;
 
 @Controller
 public class HomeController {
@@ -29,6 +31,35 @@ public class HomeController {
 		modelHolder.put("calculatedAge", calculatedAge.calculateAlienAge());
 		return "alienAgeOutput";
 	}
+	
+	@RequestMapping(path="/alienWeightInput", method=RequestMethod.GET)
+	public String alienWeightInput() {
+		return "alienWeightInput";
+	}
+	
+	@RequestMapping(path="/alienWeightOutput", method=RequestMethod.GET)
+		public String alienWeightOutput(@RequestParam double earthWeight, @RequestParam String choosePlanet, ModelMap modelHolder) {
+			AlienWeight calculatedWeight = new AlienWeight(earthWeight, choosePlanet);
+			modelHolder.put("earthWeight", earthWeight);
+			modelHolder.put("planetName", choosePlanet);
+			modelHolder.put("calculatedWeight", calculatedWeight.calculateAlienWeight());
+		return "alienWeightOutput";
+	}
+	
+	@RequestMapping(path="/AlienTravelTimeInput", method=RequestMethod.GET)
+	public String alienTravelInput() {
+		return "AlienTravelTimeInput";
+	}
+	
+	@RequestMapping(path="/AlienTravelTimeOutput", method=RequestMethod.GET)
+	public String alienTravelOutput(@RequestParam double earthAge, @RequestParam String choosePlanet, @RequestParam long chooseTransportation, ModelMap modelHolder) {
+		AlienTravelTime calculatedTravelTime = new AlienTravelTime(earthAge, choosePlanet, chooseTransportation);
+		modelHolder.put("planetName", choosePlanet);
+		modelHolder.put("earthAge", earthAge);
+		modelHolder.put("calculatedTravelTime", calculatedTravelTime.calculateTravelTime());
+		modelHolder.put("transportation", calculatedTravelTime.modeOfTransportString(chooseTransportation));
+	return "AlienTravelTimeOutput";
+}
 	
 
 }
