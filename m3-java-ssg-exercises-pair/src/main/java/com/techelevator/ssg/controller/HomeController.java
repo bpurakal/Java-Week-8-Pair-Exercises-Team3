@@ -1,7 +1,9 @@
 package com.techelevator.ssg.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -9,10 +11,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.techelevator.ssg.model.AlienAge;
 import com.techelevator.ssg.model.AlienTravelTime;
 import com.techelevator.ssg.model.AlienWeight;
+import com.techelevator.ssg.model.forum.ForumDao;
+import com.techelevator.ssg.model.forum.ForumPost;
+import com.techelevator.ssg.model.forum.JdbcForumDao;
 
 @Controller
 public class HomeController {
 
+	@Autowired
+	ForumDao forumDao;
+	
 	@RequestMapping(path="/", method=RequestMethod.GET)
 	public String displayHomePage() {
 		return "homePage";
@@ -60,17 +68,28 @@ public class HomeController {
 		modelHolder.put("transportation", calculatedTravelTime.modeOfTransportString(chooseTransportation));
 	return "AlienTravelTimeOutput";
 }
-	@RequestMapping(path="/spaceForumSubmission", method=RequestMethod.POST)
-	public String spaceForumSubmission(@RequestParam String username, @RequestParam String subject, @RequestParam String message, ModelMap modelHolder) {
-		
-		
-		return "redirect:/spaceForum";
+
+	@RequestMapping(path="/displayPosts", method=RequestMethod.GET)
+	public String displayPosts(ModelMap mm) {
+		mm.put("posts", forumDao.getAllPosts());
+		return "displayPosts";
 	}
 	
-	@RequestMapping(path="/spaceForum", method=RequestMethod.GET)
-	public String spaceForum(){
+	@RequestMapping(path="/createNewPost", method=RequestMethod.GET)
+	public String createNewPost() {
+		return "createNewPost";
+	}
+	
+	@RequestMapping(path="/savePost", method=RequestMethod.POST)
+	public String savePost (@ModelAttribute("username") String username, @ModelAttribute("message") String message, @ModelAttribute("subject") String subject) {
+		ForumPost post = new ForumPost();
+		post.setUsername(username);
+		post.setSubject(subject);
+		post.setMessage(message);
+
+		forumDao.save(post);
 		
-		return "spaceForum";
+		return "redirect:/createNewPost";
 	}
 	
 

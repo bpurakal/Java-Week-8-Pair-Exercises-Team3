@@ -28,8 +28,9 @@
             <c:url var="alienWeightUrl" value="/alienWeightInput" />
             <li><a href="${alienWeightUrl}">Alien Weight</a></li>
              <c:url var="alienTravelTimeUrl" value="/AlienTravelTimeInput" />
-            <li><a href="${alienTravelTimeUrl}">Drive Time</a></li>    
+            <li><a href="${alienTravelTimeUrl}">Drive Time</a></li> 
+            <c:url var="spaceForumUrl" value="/displayPosts" />
+            <li><a href="${spaceForumUrl}">Space Forum</a></li>
             
-                       
         </ul>
     </nav>

@@ -1,10 +1,15 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+<%@ page import="java.util.Date" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="today" value="<%=new Date()%>"/>
+
 <c:import url="/WEB-INF/jsp/common/header.jsp" />
 <section class="centeredPanel">
 
-	<c:url var="formAction" value="/spaceForum" />
-	<form method="GET" action="${formAction}">
+	<c:url var="formAction" value="/savePost" />
+	<form method="POST" action="${formAction}">
 
 		<h2>New Geek Post</h2>
 		
@@ -19,13 +24,16 @@
 		</div>
 		
 		<div class="formInputGroup">
-			<label for="message">Message</label> <textarea
-				name="message" id="message" rows="10" cols="40"> </textarea>
+			<label for="message">Message</label> 
+			<textarea name="message" id="message" rows="10" cols="40"> </textarea>
 		</div>
 		
 		<div class="formInputGroup">
-		<label></label>
-			<input class="formSubmitButton" type="submit" value="Submit" />
+			<input class="formSubmitButton" type="submit" value="Post">
+		</div>
+		<div class="formInputGroup">
+		
+		<input type="hidden" name="post_date" value="${today}">
 		</div>
 	</form>
 </section>
