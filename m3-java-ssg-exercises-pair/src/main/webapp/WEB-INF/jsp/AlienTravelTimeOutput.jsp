@@ -8,11 +8,16 @@
 
 		<img class="planetAgeImage" src="img/${param.choosePlanet}.jpg" />
 		<span class="ageResult">
-			If you are
-			<c:out value="${param.earthWeight}" />
-			pounds on planet Earth, then you are
-			<c:out value="${calculatedWeight} " />
-			<c:out value="${param.choosePlanet}" /> pounds.
+			Traveling by
+			<c:out value="${transportation}" />
+			you will reach
+			<c:out value="${param.choosePlanet}" />
+			in
+			<c:out value="${calculatedTravelTime} " />
+			years. You will be 
+			<!-- Age after time traveled-->
+			<c:out value="${param.earthAge + calculatedTravelTime}" />
+			years old.
 		</span>
 	</div>
 
