@@ -1,5 +1,7 @@
 package com.techelevator.ssg.controller;
 
+import java.time.LocalDateTime;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -83,9 +85,11 @@ public class HomeController {
 	@RequestMapping(path="/savePost", method=RequestMethod.POST)
 	public String savePost (@ModelAttribute("username") String username, @ModelAttribute("message") String message, @ModelAttribute("subject") String subject) {
 		ForumPost post = new ForumPost();
+		LocalDateTime datePosted = LocalDateTime.now();
 		post.setUsername(username);
 		post.setSubject(subject);
 		post.setMessage(message);
+		post.setDatePosted(datePosted);
 
 		forumDao.save(post);
 		
