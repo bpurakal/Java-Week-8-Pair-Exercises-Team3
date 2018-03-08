@@ -31,6 +31,8 @@
             <li><a href="${alienTravelTimeUrl}">Drive Time</a></li> 
             <c:url var="spaceForumUrl" value="/displayPosts" />
             <li><a href="${spaceForumUrl}">Space Forum</a></li>
+            <c:url var="productListUrl" value="/shoppingCart/index" />
+            <li><a href="${productListUrl}">Space Store</a></li>
             
         </ul>
     </nav>
