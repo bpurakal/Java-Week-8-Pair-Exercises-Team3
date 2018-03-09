@@ -1,5 +1,6 @@
 package com.techelevator.ssg.controller;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,34 +40,52 @@ public class ProductListController {
 		return "productDetail";
 	}
 	
-	@RequestMapping(path="/shoppingCart/addToCart/", method=RequestMethod.POST)
-	public String addToCart(@ModelAttribute("id") Long id, /*@ModelAttribute("quantity") int quantity,*/ HttpSession session) {
+	@RequestMapping(path="/shoppingCart/addToCart", method=RequestMethod.POST)
+	public String addToCart(@RequestParam("id") Long id, @RequestParam("quantity") Integer quantity, HttpSession session) {
 		//input type = hidden field, use id to find item and then update quantity associated with product
 		Product selectedProduct = productDao.getProductById(id);
 		
-		Map<Product, Long> shoppingCart = new HashMap<>();
+		Map<Product, Integer> shoppingCart = new HashMap<>();
 		
 		if(session.getAttribute("shoppingCart") != null) {
-			shoppingCart = (Map<Product, Long>)session.getAttribute("shoppingCart");
+			shoppingCart = (Map<Product, Integer>)session.getAttribute("shoppingCart");
 		} else {
 			shoppingCart = new HashMap<>();
 		}
 		
 		if(shoppingCart.containsKey(selectedProduct)) {
-			Long quantity = shoppingCart.get(selectedProduct);
-			quantity++;
-			shoppingCart.put(selectedProduct, quantity);
+			int cartQuantity = shoppingCart.get(selectedProduct);
+			cartQuantity += quantity;
+			shoppingCart.put(selectedProduct, cartQuantity);
 		} else {
-			shoppingCart.put(selectedProduct, 1L);
+			shoppingCart.put(selectedProduct, quantity);
 		}
 		
 		session.setAttribute("shoppingCart", shoppingCart);
 		
-		return "redirect:/productDetail";
+		return "redirect:/shoppingCart/view";
+	}
+	
+	private BigDecimal getTotal(Map<Product,Integer> shoppingCart) {
+		
+		BigDecimal total = BigDecimal.ZERO; 
+		for(Product product: shoppingCart.keySet()) {
+			total = total.add(product.getPrice().multiply(new BigDecimal (shoppingCart.get(product))));
+
+		}
+		return total;
 	}
 	
 	@RequestMapping(path="/shoppingCart/view", method=RequestMethod.GET)
-	public String displayShoppingCart() {
+	public String displayShoppingCart(ModelMap mh, HttpSession session) {
+		Map<Product, Integer> shoppingCart = new HashMap<>();
+		
+		if(session.getAttribute("shoppingCart") != null) {
+			shoppingCart = (Map<Product, Integer>)session.getAttribute("shoppingCart");
+		} else {
+			shoppingCart = new HashMap<>();
+		}
+		mh.put("total", getTotal(shoppingCart));
 		return "shoppingCart";
 	}
 	

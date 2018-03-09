@@ -4,23 +4,26 @@
 <section class="centeredPanel">
 
 		<h2>Solar System Geek Gift Shop</h2>
+		<c:url var="formAction" value="/shoppingCart/addToCart"/>
 		<form method="POST" action="${formAction}">
 		<div class="formInputGroup">
 				
 				<div class="productDetails">
 				<c:url var="imageName" value="/img/${product.imageName}"/>
-				<img class="imageName" alt="${product.imageName}" src="${imageName}">
+				<img class="imageName" alt="${product.imageName}" src="${imageName}" style="width:45%">
+				</div>
+				<div>
 				<c:out value="${product.name}" />
 				<c:out value="${product.price}" />
 				<c:out value="${product.description}"/>
 				<label for="quantity">Quantity to Buy</label>
-				<input type="text" id="quantity" />
+				<input type="text" name="quantity" id="quantity" />
 				<c:url var="formAction" value="/shoppingCart/detail/${product.id}"  />
 				
 					<input type="hidden" name="id" value="${product.id}"/>
 					<input type="submit" value="Add To Cart" id="addToCart"/>
-					
-				</div>
+					</div>
+				
 
 			
 		</div>

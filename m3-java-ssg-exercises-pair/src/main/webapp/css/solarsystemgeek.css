@@ -230,3 +230,12 @@ section.centeredPanel {
 	padding: 20px 300px 0px 0px;
 	font-weight: bold;
 }
+
+.noBullet {
+	list-style-type: none;
+	color: black;
+}
+
+.blue-text{
+	color: rgb(100,139,248);
+}
